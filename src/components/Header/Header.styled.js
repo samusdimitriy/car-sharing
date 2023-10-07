@@ -1,128 +1,132 @@
-import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { GrCatalog } from 'react-icons/gr';
-import { MdFavorite } from 'react-icons/md';
 
-const Container = styled.div`
-  background-color: #f2f2f2;
-  padding: 0px 20px;
-  @media screen and (min-width: 768px) {
-    padding: 0px 50px;
-  }
-  @media screen and (min-width: 1200px) {
-    padding: 0px 130px;
-    ${props =>
-      props.path === '/' &&
-      `
-    padding: 0px 180px;
-  `}
-  }
+export const HeaderWrapper = styled.header`
+  color: ${props => props.theme.headingsSecondColor};
+  padding: 12px;
+  margin-bottom: 24px;
 `;
-const HeaderContainer = styled.div`
+
+export const HeaderContainer = styled.div`
+  display: grid;
+  grid-template-columns: 6.5rem 1fr 10.25rem;
+  justify-items: center;
+  align-items: center;
+  gap: 0.9375rem;
+  min-height: 3rem;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  max-width: ${props => props.theme.desktop};
+  margin: 0 auto;
+  padding: 0 0.9375rem;
+`;
+
+export const LogoIcon = styled.svg`
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px solid #cacacd;
-`;
-const LogoContainer = styled(Link)`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #000000;
-`;
-const LogoImgContainer = styled.div`
-  max-width: 60px;
-`;
-const StyledBtn = styled.button`
-  cursor: pointer;
-  border: none;
-  border-radius: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #3470ff;
-  transition: background-color 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 4px;
+  color: ${props => props.theme.headingsColor};
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.5s;
+
+  &:after,
+  &:before {
+    transition: color 0.5s, width 0.5s, left 0.5s, right 0.5s;
+  }
+
+  &:after,
+  &:before {
+    content: ' ';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    height: 100%;
+    margin: auto;
+    background: ${props => props.theme.hoverColor};
+    color: transparent;
+    opacity: 0.75;
+    transition: color 0.5s, width 0.5s, left 0.5s, right 0.5s;
+  }
+
+  &:before {
+    left: 0;
+  }
+
+  &:after {
+    right: 0;
+  }
+
+  &:hover:after,
+  &:hover:before,
+  &:focus:after,
+  &:focus:before {
+    width: 100%;
+  }
+
   &:hover,
   &:focus {
-    background-color: #0b44cd;
-  }
-`;
-const Logo = styled.p`
-  font-family: 'Caveat', cursive;
-  font-size: 36px;
-  font-weight: 700;
-`;
+    color: ${props => props.theme.whiteColor};
 
-const NavContainer = styled.div`
-  display: none;
-  gap: 15px;
-  font-family: 'Caveat', cursive;
-  @media screen and (min-width: 768px) {
-    display: flex;
-    font-size: 28px;
-  }
-`;
-const SNavLink = styled(NavLink)`
-  color: #000;
-  svg {
-    transition: fill 350ms cubic-bezier(0.4, 0, 0.2, 1);
-    path {
-      transition: stroke 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    > svg {
+      fill: ${props => props.theme.whiteColor};
     }
   }
-  &.active {
+`;
+
+export const AdditionDataList = styled.ul`
+  text-align: start;
+
+  .addition-data__link {
     position: relative;
-    color: #0b44cd;
-    svg {
-      fill: #0b44cd;
-      path {
-        stroke: #0b44cd;
-      }
+    z-index: 1;
+    display: block;
+    width: fit-content;
+    color: inherit;
+    padding: 5px 0;
+    transition: color 0.5s;
+
+    &:after,
+    &:before {
+      transition: color 0.5s, width 0.5s, left 0.5s, right 0.5s;
     }
-    &::after {
-      content: '';
-      width: 100%;
-      height: 2px;
+
+    &:after,
+    &:before {
+      content: ' ';
       position: absolute;
-      background-color: #0b44cd;
-      bottom: 0;
+      z-index: -1;
+      bottom: 2px;
+      width: 0;
+      height: 2px;
+      margin: auto;
+      border-radius: 4px;
+      background: ${props => props.theme.hoverColor};
+      color: transparent;
+      opacity: 0.75;
+      transition: color 0.5s, width 0.5s, left 0.5s, right 0.5s;
+    }
+
+    &:before {
       left: 0;
-      transform: translateY(10px);
+    }
+
+    &:after {
+      right: 0;
+    }
+
+    &:hover:after,
+    &:hover:before {
+      width: 100%;
+    }
+
+    &:hover {
+      color: ${props => props.theme.hoverColor};
     }
   }
-  transition: color 350ms cubic-bezier(0.4, 0, 0.2, 1);
-  &:hover,
-  &:focus {
-    color: #0b44cd;
-    svg {
-      fill: #0b44cd;
-      path {
-        stroke: #0b44cd;
-      }
-    }
-  }
-  font-size: 38px;
-  @media screen and (min-width: 768px) {
-    font-size: 28px;
-  }
 `;
-const Catalog = styled(GrCatalog)`
-  margin-right: 5px;
-`;
-const Favorite = styled(MdFavorite)`
-  margin-right: 5px;
-  fill: red;
-`;
-export {
-  Container,
-  LogoContainer,
-  StyledBtn,
-  HeaderContainer,
-  Logo,
-  Catalog,
-  Favorite,
-  LogoImgContainer,
-  NavContainer,
-  SNavLink,
-};

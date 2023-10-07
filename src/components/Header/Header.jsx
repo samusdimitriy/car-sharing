@@ -1,87 +1,37 @@
-// import {
-//   Container,
-//   HeaderContainer,
-//   LogoContainer,
-//   StyledBtn,
-//   Logo,
-//   LogoImgContainer,
-//   NavContainer,
-//   SNavLink,
-//   Catalog,
-//   Favorite,
-// } from './Header.styled';
-// import Logotype from '../../img/rent.png';
-// import { useLocation } from 'react-router-dom';
-// import { useState } from 'react';
-// import ContactForm from '../ContactForm/ContactForm';
-// import { StyleSheetManager } from 'styled-components';
-// import { useMediaQuery } from '@mui/material';
-// import { AiOutlineMenu } from 'react-icons/ai';
-// import HeaderMenu from './HeaderMenu';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import Navigation from '../Navigation/Navigation';
+import { HeaderWrapper, AdditionDataList } from './Header.styled';
+import logo from './../../pictures/rent.png';
+import { HeaderContainer, LogoIcon } from './Header.styled';
 
-// const Header = () => {
-//   const { pathname } = useLocation();
-//   const [isOpen, setIsOpen] = useState(false);
-//   const [menuIsOpen, setMenuIsOpen] = useState(false);
-//   const isMobile = useMediaQuery('(min-width: 768px)');
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Catalog', href: '/catalog' },
+  { label: 'Favorites', href: '/favorites' },
+];
 
-//   const handleClose = () => {
-//     setIsOpen(false);
-//     document.body.style.overflow = 'auto';
-//   };
-//   const handleOpen = () => {
-//     setIsOpen(true);
-//     document.body.style.overflow = 'hidden';
-//   };
-//   const handleMenuClose = () => {
-//     setMenuIsOpen(false);
-//     document.body.style.overflow = 'auto';
-//     const root = document.getElementById('root');
-//     root.style.overflow = 'auto';
-//   };
-//   const handleMenuOpen = () => {
-//     setMenuIsOpen(true);
-//     document.body.style.overflow = 'hidden';
-//     const root = document.getElementById('root');
-//     root.style.overflow = 'hidden';
-//   };
+const Header = () => {
+  return (
+    <HeaderWrapper>
+      <HeaderContainer>
+        <NavLink to="/" className="header__logo">
+          <LogoIcon src={logo} alt="logo"></LogoIcon>
+        </NavLink>
+        <Navigation navLinks={navLinks} />
+        <AdditionDataList>
+          <li>
+            <p className="addition-data__text">Schedule from 8:00 to 21:00</p>
+          </li>
+          <li>
+            <a href="tel:+380730000000" className="addition-data__link">
+              +380 73 000 00 00
+            </a>
+          </li>
+        </AdditionDataList>
+      </HeaderContainer>
+    </HeaderWrapper>
+  );
+};
 
-//   return (
-//     <StyleSheetManager shouldForwardProp={prop => !['path'].includes(prop)}>
-//       <Container path={pathname}>
-//         <HeaderContainer>
-//           <LogoContainer to="/">
-//             <LogoImgContainer>
-//               <img src={Logotype} alt="Logotype" />
-//             </LogoImgContainer>
-//             <Logo>DriveOn</Logo>
-//           </LogoContainer>
-//           {pathname === '/' ? (
-//             <StyledBtn type="button" onClick={handleOpen}>
-//               Contact Us
-//             </StyledBtn>
-//           ) : isMobile ? (
-//             <NavContainer>
-//               <SNavLink to={'/catalog'}>
-//                 <Catalog size={24} />
-//                 Catalog
-//               </SNavLink>
-//               <SNavLink to={'/favorite'}>
-//                 <Favorite size={24} />
-//                 Favorite
-//               </SNavLink>
-//             </NavContainer>
-//           ) : (
-//             <>
-//               <AiOutlineMenu onClick={handleMenuOpen} size={30} />
-//             </>
-//           )}
-//         </HeaderContainer>
-//         {isOpen && <ContactForm handleClose={handleClose} />}
-//         {menuIsOpen && <HeaderMenu handleClose={handleMenuClose} />}
-//       </Container>
-//     </StyleSheetManager>
-//   );
-// };
-
-// export default Header;
+export default Header;
