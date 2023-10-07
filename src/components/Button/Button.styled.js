@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const StyledButton = styled.button`
-  font-size: ${props => props.theme.headingsSecondFontSize};
+  font-size: 14px;
   font-weight: 600;
   line-height: 1.42;
-  color: ${props => props.theme.whiteColor};
+  color: #fff;
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -15,22 +15,22 @@ export const StyledButton = styled.button`
   ${props =>
     props.variant === 'text'
       ? `
-        font-size: ${props.theme.standartSize};
+        font-size: 16px;
         font-weight: 500;
         line-height: 1.5;
         text-decoration-line: underline;
-        color: ${props.theme.accentColor};
+        color: #3470ff;
         background-color: transparent;
         padding: 0;
         border: none;
       `
       : `
-        background-color: ${props.theme.accentColor};
+        background-color: #3470ff;
       `}
 
   &:hover,
   &:focus {
-    background-color: ${props => props.theme.hoverColor};
+    background-color: #0b44cd;
   }
 
   ${props =>
@@ -38,7 +38,7 @@ export const StyledButton = styled.button`
       ? `
         &:hover,
         &:focus {
-          color: ${props.theme.hoverColor};
+          color: #0B44CD;
           background-color: transparent;
         }
       `

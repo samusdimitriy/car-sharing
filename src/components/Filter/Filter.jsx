@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { selectAdvertsFilter } from 'redux/filter/filterSelectors';
-import { setAdvertsFilter } from 'redux/filter/filterSlice';
+import { selectFilter } from 'redux/filter/filterSelectors';
+import { setFilter } from 'redux/filter/filterSlice';
 
-import { removeCommasFromString } from '../../helpers/handleCommaDel';
+import { removeCommasFromString } from '../helpers/handleCommaDel';
 
 import FromToField from 'components/MileageField/MileageField';
 import SelectField from 'components/SelectField/SelectField';
@@ -15,7 +15,7 @@ import Container from './Filter.styled';
 
 const Filter = ({ filtersList }) => {
   const dispatch = useDispatch();
-  const filter = useSelector(selectAdvertsFilter);
+  const filter = useSelector(selectFilter);
 
   const handleChangeFilter = e => {
     e.preventDefault();
@@ -42,7 +42,7 @@ const Filter = ({ filtersList }) => {
       prices: [],
     };
 
-    dispatch(setAdvertsFilter(newfilters));
+    dispatch(setFilter(newfilters));
   };
 
   return (

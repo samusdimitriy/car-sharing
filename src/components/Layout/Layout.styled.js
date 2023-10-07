@@ -4,7 +4,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-color: ${props => props.bgColor};
+  background-color: #fff;
 
   @supports (overflow: clip) {
     overflow: clip;

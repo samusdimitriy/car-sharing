@@ -34,6 +34,9 @@ const filterSlice = createSlice({
       state.from = '';
       state.to = '';
     },
+    setFilter(state, action) {
+      return (state = { ...state, ...action.payload });
+    },
   },
 });
 
@@ -44,5 +47,6 @@ export const {
   setStyledPrice,
   setTo,
   resetFilter,
+  setFilter,
 } = filterSlice.actions;
 export const filterReducer = filterSlice.reducer;
