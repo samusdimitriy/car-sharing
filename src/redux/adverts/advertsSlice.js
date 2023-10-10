@@ -1,27 +1,27 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const advertsApiSlice = createApi({
-  reducerPath: "adverts",
+  reducerPath: 'adverts',
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://647dc2cfaf984710854a42ef.mockapi.io",
+    baseUrl: 'https://65211ea0a4199548356cd1f2.mockapi.io',
   }),
-  tagTypes: ["Advert"],
-  endpoints: (builder) => ({
+  tagTypes: ['Advert'],
+  endpoints: builder => ({
     getAdverts: builder.query({
-      query: () => "/advert",
-      providesTags: ["Advert"],
+      query: () => '/adverts',
+      providesTags: ['Advert'],
     }),
     getAdvertById: builder.query({
-      query: (id) => `/advert/${id}`,
-      providesTags: ["Advert"],
+      query: id => `/adverts/${id}`,
+      providesTags: ['Advert'],
     }),
     updateFavoriteAdvertById: builder.mutation({
-      query: (fields) => ({
-        url: `/advert/${fields.id}`,
-        method: "PUT",
+      query: fields => ({
+        url: `/adverts/${fields.id}`,
+        method: 'PUT',
         body: fields,
       }),
-      invalidatesTags: ["Advert"],
+      invalidatesTags: ['Advert'],
     }),
   }),
 });

@@ -1,30 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { persistStore } from 'redux-persist';
-import {
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from 'redux-persist';
-import { persistedCarReducer } from './cars/carsSlice';
-import { filterReducer } from './filter/filterSlice';
-
-const reducer = {
-  cars: persistedCarReducer,
-  filter: filterReducer,
-};
+import { configureStore } from "@reduxjs/toolkit";
+import { advertsApiSlice } from "./adverts/advertsSlice";
+import { filtersReducer } from "./filters/filtersSlice";
 
 export const store = configureStore({
-  reducer,
-  middleware: getDefaultMiddleware => [
-    ...getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
+  reducer: {
+    [advertsApiSlice.reducerPath]: advertsApiSlice.reducer,
+    filters: filtersReducer,
+  },
+  middleware: (getDefaultMiddleware) => [
+    ...getDefaultMiddleware(),
+    advertsApiSlice.middleware,
   ],
 });
-
-export const persistor = persistStore(store);

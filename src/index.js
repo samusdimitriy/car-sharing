@@ -1,20 +1,25 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import 'modern-normalize/modern-normalize.css';
 
-import { store } from 'redux/store';
+import { store } from './redux/store';
 
-import App from './components/App';
+import App from './component/App';
+import './index.css';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+import GlobalStyle from './GlobalStyle';
+
+const rootElement = document.getElementById('root');
+
+render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter basename="/car-sharing">
+        <GlobalStyle />
         <App />
       </BrowserRouter>
     </Provider>
-  </React.StrictMode>
+  </React.StrictMode>,
+  rootElement
 );

@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap');
+
+@import-normalize; /* bring in normalize.css styles */
+
+:root {
+  --fontSize: 12px;
+  --headingsSecondFontSize: 14px;
+  --headingsFontSize: 18px;
+  --standardSize: 16px;
+
+  --bgColor: #ffffff;
+  --bgDarkColor: #262626;
+  --bgSecondColor: #f7f7fb;
+
+  --headingsColor: #121417;
+  --headingsSecondColor: #8a8a89;
+
+  --descColor: rgba(18, 20, 23, 0.5);
+  --descSecondColor: #000000;
+
+  --accentColor: #3470ff;
+  --hoverColor: #0b44cd;
+
+  --borderColor: rgba(18, 20, 23, 0.1);
+  --borderSecondColor: rgba(138, 138, 137, 0.2);
+
+  --whiteColor: #ffffff;
+  --blackColor: #121417;
+
+  --desktop: 91.25em;
+}

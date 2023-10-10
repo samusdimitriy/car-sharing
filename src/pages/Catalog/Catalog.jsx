@@ -1,23 +1,34 @@
 import { useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
+import styled from 'styled-components';
 
 import { useGetAdvertsQuery } from 'redux/adverts/advertsSlice';
-import { selectFilter } from 'redux/filter/filterSelectors';
+import { selectAdvertsFilter } from 'redux/filters/filtersSelectors';
 
-import { getFilteredAdverts } from '../../components/helpers/getFilteredAdverts';
+import { getFilteredAdverts } from 'utils/getFilteredAdverts';
+import { createArrayWithStep } from 'utils/createArrayWithStep';
 
-import AdvertsList from '../../components/AdvertsList/AdvertsList';
-import Filter from '../../components/Filter/Filter';
-import Section from '../../components/Section/Section';
-import Button from '../../components/Button/Button';
-import CustomLoader from '../../components/Loader/Loader';
+import AdvertsList from 'component/AdvertsList/AdvertsList';
+import Filter from 'component/Filter/Filter';
+import Section from 'component/kit/Section/Section';
+import Button from 'component/kit/Button/Button';
+import CustomLoader from 'component/kit/CustomLoader/CustomLoader';
 
-import { BtnWrapper, LoadMoreBtn } from './Catalog.styled';
+const LoadMoreButton = styled(Button)`
+  display: block;
+  margin: 100px auto 0 auto;
+`;
+
+const ButtonsWrapper = styled.div`
+  display: flex;
+  width: fit-content;
+  gap: 24px;
+  margin: auto;
+`;
 
 const Catalog = () => {
-  const filter = useSelector(selectFilter);
+  const filter = useSelector(selectAdvertsFilter);
   const { data: adverts, isLoading } = useGetAdvertsQuery();
-
   const [currentPage, setCurrentPage] = useState(1);
 
   let dataFilters = {
@@ -29,13 +40,6 @@ const Catalog = () => {
   const limitAdverts = 8;
   let totalAdverts = 0;
   let totalPages = 0;
-
-  const createArrayWithStep = (start, end, step) => {
-    return Array.from(
-      { length: Math.floor((end - start) / step) + 1 },
-      (_, index) => start + index * step
-    );
-  };
 
   if (!isLoading) {
     visibleAdverts = getFilteredAdverts(adverts, filter);
@@ -63,14 +67,14 @@ const Catalog = () => {
     return visibleAdverts?.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, visibleAdverts]);
 
-  const hundleClickLoadMore = () => {
+  const handleClickLoadMore = () => {
     if (currentPage < totalPages) {
       setCurrentPage(prev => prev + 1);
       window.scrollTo(0, 0);
     }
   };
 
-  const hundleClickRetuntToStart = () => {
+  const handleClickReturnToStart = () => {
     setCurrentPage(1);
     window.scrollTo(0, 0);
   };
@@ -82,22 +86,26 @@ const Catalog = () => {
         <>
           <Filter filtersList={dataFilters} />
           <AdvertsList list={currentAdvertsData} />
-          <BtnWrapper>
+          <ButtonsWrapper>
             {totalPages > currentPage && (
-              <LoadMoreBtn variant="text" onClick={hundleClickLoadMore}>
-                Load more
-              </LoadMoreBtn>
-            )}
-            {currentPage !== 1 && (
-              <Button
+              <LoadMoreButton
                 variant="text"
                 className="load-more__btn"
-                onClick={hundleClickRetuntToStart}
+                onClick={handleClickLoadMore}
+              >
+                Load more
+              </LoadMoreButton>
+            )}
+            {currentPage !== 1 && (
+              <LoadMoreButton
+                variant="text"
+                className="load-more__btn"
+                onClick={handleClickReturnToStart}
               >
                 Return to 1 page
-              </Button>
+              </LoadMoreButton>
             )}
-          </BtnWrapper>
+          </ButtonsWrapper>
         </>
       )}
     </Section>
