@@ -31,7 +31,6 @@ function App() {
         pauseOnFocusLoss
         draggable
         transition={Slide}
-        theme="light"
       />
     </>
   );

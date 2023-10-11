@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { toast } from 'react-toastify';
@@ -75,13 +74,6 @@ const Filter = ({ filtersList }) => {
       <Button type="submit">Search</Button>
     </FilterForm>
   );
-};
-
-Filter.propTypes = {
-  filtersList: PropTypes.shape({
-    brands: PropTypes.arrayOf(PropTypes.string).isRequired,
-    prices: PropTypes.arrayOf(PropTypes.number).isRequired,
-  }).isRequired,
 };
 
 export default Filter;

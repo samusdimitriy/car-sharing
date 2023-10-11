@@ -30,10 +30,14 @@ const ThumbImg = styled.div`
   height: 268px;
 
   & img {
-    width: 100%;
     height: 268px;
     object-fit: cover;
     border-radius: 14px;
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.01);
+    }
   }
 
   & button {
@@ -115,7 +119,8 @@ const CarCard = ({ car }) => {
   const handleToggleFavorite = async id => {
     try {
       console.log('id', id);
-      await updateFavoriteAdvertById({ id, favorite: !favorite });
+      console.log('favorite', favorite);
+      await updateFavoriteAdvertById({ id: id, favorite: !favorite });
     } catch (error) {
       toast.warn('Sorry something wrong');
     }

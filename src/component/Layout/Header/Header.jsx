@@ -12,7 +12,8 @@ const navLinks = [
 const HeaderContainer = styled.header`
   color: var(--headingsSecondColor);
   padding: 12px;
-  margin-bottom: 24px;
+  margin-bottom: 54px;
+  border-bottom: 1px solid var(--headingsSecondColor);
 
   .header__container {
     display: grid;
@@ -21,32 +22,19 @@ const HeaderContainer = styled.header`
     align-items: center;
     gap: 0.9375rem;
 
-    min-height: 3rem;
-
-    padding-top: 0.3125rem;
-    padding-bottom: 0.3125rem;
-
     max-width: var(--desktop);
     margin: 0 auto;
-    padding: 0 0.9375rem;
+    padding: 0 5rem;
   }
 `;
 
 const HeaderLogo = styled(NavLink)`
-  position: relative;
-  display: flex;
-  align-items: center;
-  font-weight: 800;
-  text-transform: uppercase;
-  padding: 4px;
-  color: var(--headingsColor);
-  border-radius: 5px;
-  overflow: hidden;
-  z-index: 1;
-  transition: color 0.5s;
+  width: 200px;
+  height: 150px;
+  transition: 0.3s ease-in-out;
 
   &:hover {
-    color: var(--hoverColor);
+    transform: scale(1.01);
   }
 `;
 

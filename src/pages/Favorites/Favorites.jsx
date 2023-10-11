@@ -114,13 +114,10 @@ const Favorites = () => {
 
   return (
     <Section>
-      {isLoading && <CustomLoader />}
-
-      {!isLoading && (
+      {isLoading ? (
+        <CustomLoader />
+      ) : (
         <Container>
-          <FilterWrapper>
-            <Filter filtersList={dataFilters} />
-          </FilterWrapper>
           <AdvertsWrapper>
             <AdvertsList list={currentAdvertsData} />
             <div className="buttons__wrapper">

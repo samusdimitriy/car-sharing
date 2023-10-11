@@ -11,10 +11,20 @@ export const ThumbImg = styled.div`
   margin-bottom: 14px;
 
   & img {
-    width: 100%;
+    width: 274px;
     height: 268px;
     object-fit: cover;
+
     border-radius: 14px;
+    margin-bottom: 14px;
+
+    transform: scale(1.1);
+    margin-left: 10px;
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+      margin-left: 0px;
+    }
   }
 
   & button {
