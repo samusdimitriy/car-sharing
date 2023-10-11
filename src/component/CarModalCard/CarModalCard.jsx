@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { getCarDetailsDescList } from 'utils/getCarDescriptionList';
-import { formatingCommasToNumber } from 'utils/formatingCommasToNumber';
+import { commaToNumber } from 'utils/commaToNumber';
 import DescriptionList from '../kit/DescriptionList/DescriptionList';
 import DescriptionChipList from '../kit/DescriptionChipList/DescriptionChipList';
 
@@ -103,7 +103,7 @@ function CarModalCard({ car }) {
 
   const rentalConditionsArray = [
     ...rentalConditions.split('\n'),
-    `Milage: ${formatingCommasToNumber(mileage.toString())}`,
+    `Milage: ${commaToNumber(mileage.toString())}`,
     `Price: ${rentalPrice}`,
   ];
 

@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 import { selectAdvertsFilter } from 'redux/filters/filtersSelectors';
 import { setAdvertsFilter } from 'redux/filters/filtersSlice';
-import { removeCommasFromString } from 'utils/formatingCommasToNumber';
+import { removeCommasFromString } from 'utils/commaToNumber';
 
 import FromToField from 'component/kit/FromToField/FromToField';
 import SelectField from 'component/kit/SelectField/SelectField';

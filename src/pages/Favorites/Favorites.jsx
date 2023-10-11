@@ -30,6 +30,12 @@ const AdvertsWrapper = styled.div`
 const LoadMoreButton = styled(Button)`
   display: block;
   margin: 100px auto 0 auto;
+  border: 1px solid var(--accentColor);
+
+  &:hover {
+    background-color: var(--accentColor);
+    color: var(--whiteColor);
+  }
 `;
 
 const Favorites = () => {

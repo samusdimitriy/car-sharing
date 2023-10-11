@@ -43,6 +43,13 @@ const ModalContent = styled.div`
 
 const CloseButton = styled(Button)`
   width: 24px;
+  background-color: transparent;
+  padding: 0;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+  }
 `;
 
 const Modal = ({ children, onCloseModal }) => {

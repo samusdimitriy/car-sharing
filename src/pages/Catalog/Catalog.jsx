@@ -17,6 +17,12 @@ import CustomLoader from 'component/kit/CustomLoader/CustomLoader';
 const LoadMoreButton = styled(Button)`
   display: block;
   margin: 100px auto 0 auto;
+  border: 1px solid var(--accentColor);
+
+  &:hover {
+    background-color: var(--accentColor);
+    color: var(--whiteColor);
+  }
 `;
 
 const ButtonsWrapper = styled.div`

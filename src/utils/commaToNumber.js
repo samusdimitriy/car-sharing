@@ -1,5 +1,5 @@
-export const formatingCommasToNumber = (stringNumbers) => {
-  const stringWithoutCommas = stringNumbers.replace(/,/g, "");
+export const commaToNumber = stringNumbers => {
+  const stringWithoutCommas = stringNumbers.replace(/,/g, '');
 
   if (stringWithoutCommas.length > 3) {
     const parts = [];
@@ -8,14 +8,14 @@ export const formatingCommasToNumber = (stringNumbers) => {
       parts.unshift(stringWithoutCommas.slice(Math.max(i - 3, 0), i));
     }
 
-    return parts.join(",");
+    return parts.join(',');
   } else {
     return stringWithoutCommas;
   }
 };
 
-export const removeCommasFromString = (stringNumbers) => {
-  const stringWithoutCommas = stringNumbers.replace(/,/g, "");
+export const removeCommasFromString = stringNumbers => {
+  const stringWithoutCommas = stringNumbers.replace(/,/g, '');
 
   return stringWithoutCommas;
 };

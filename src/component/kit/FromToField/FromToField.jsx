@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { toast } from 'react-toastify';
-import { formatingCommasToNumber } from 'utils/formatingCommasToNumber';
+import { commaToNumber } from 'utils/commaToNumber';
 
 const InputFromToFieldGroup = styled.div`
   display: inline-grid;
@@ -91,7 +91,7 @@ const FromToField = props => {
 
     setFieldValue(prev => ({
       ...prev,
-      [e.target.name]: formatingCommasToNumber(e.target.value),
+      [e.target.name]: commaToNumber(e.target.value),
     }));
   };
 
