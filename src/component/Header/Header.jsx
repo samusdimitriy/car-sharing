@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import Navigation from 'component/core/Navigation/Navigation';
+import Navigation from 'component/Navigation/Navigation';
 import LogoIcon from 'images/icons/LogoIcon';
 
 const navLinks = [

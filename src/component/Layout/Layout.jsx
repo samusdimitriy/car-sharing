@@ -1,8 +1,8 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
-import Header from './Header/Header';
-import CustomLoader from 'component/kit/CustomLoader/CustomLoader';
+import Header from '../Header/Header';
+import CustomLoader from 'component/CustomLoader/CustomLoader';
 
 const Wrapper = styled.div`
   display: flex;

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Button from 'component/kit/Button/Button';
+import Button from 'component/Button/Button';
 import CloseIcon from 'images/icons/CloseIcon';
 
 const Overlay = styled.div`

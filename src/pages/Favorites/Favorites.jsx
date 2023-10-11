@@ -8,9 +8,9 @@ import { selectAdvertsFilter } from 'redux/filters/filtersSelectors';
 import { getFilteredAdverts } from 'utils/getFilteredAdverts';
 
 import AdvertsList from 'component/AdvertsList/AdvertsList';
-import Button from 'component/kit/Button/Button';
-import Section from 'component/kit/Section/Section';
-import CustomLoader from 'component/kit/CustomLoader/CustomLoader';
+import Button from 'component/Button/Button';
+import Section from 'component/Section/Section';
+import CustomLoader from 'component/CustomLoader/CustomLoader';
 
 const Container = styled.div`
   position: relative;

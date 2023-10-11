@@ -7,9 +7,9 @@ import { selectAdvertsFilter } from 'redux/filters/filtersSelectors';
 import { setAdvertsFilter } from 'redux/filters/filtersSlice';
 import { removeCommasFromString } from 'utils/commaToNumber';
 
-import FromToField from 'component/kit/FromToField/FromToField';
-import SelectField from 'component/kit/SelectField/SelectField';
-import Button from 'component/kit/Button/Button';
+import FromToField from 'component/FromToField/FromToField';
+import SelectField from 'component/SelectField/SelectField';
+import Button from 'component/Button/Button';
 
 const FilterForm = styled.form`
   display: flex;

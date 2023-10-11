@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import CarCard from 'component/CarCard/CarCard';
+import Card from 'component/Card/Card';
 
 const StyledAdvertsList = styled.ul`
   display: grid;
@@ -20,7 +20,7 @@ const AdvertsList = ({ list = [] }) => {
       {list.length ? (
         <StyledAdvertsList>
           {list.map(item => (
-            <CarCard key={`${item.make}_${Math.random(1)}`} car={item} />
+            <Card key={`${item.make}_${Math.random(1)}`} car={item} />
           ))}
         </StyledAdvertsList>
       ) : (

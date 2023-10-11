@@ -10,9 +10,9 @@ import { createArrayWithStep } from 'utils/createArrayWithStep';
 
 import AdvertsList from 'component/AdvertsList/AdvertsList';
 import Filter from 'component/Filter/Filter';
-import Section from 'component/kit/Section/Section';
-import Button from 'component/kit/Button/Button';
-import CustomLoader from 'component/kit/CustomLoader/CustomLoader';
+import Section from 'component/Section/Section';
+import Button from 'component/Button/Button';
+import CustomLoader from 'component/CustomLoader/CustomLoader';
 
 const LoadMoreButton = styled(Button)`
   display: block;
@@ -87,8 +87,9 @@ const Catalog = () => {
 
   return (
     <Section>
-      {isLoading && <CustomLoader />}
-      {!isLoading && (
+      {isLoading ? (
+        <CustomLoader />
+      ) : (
         <>
           <Filter filtersList={dataFilters} />
           <AdvertsList list={currentAdvertsData} />

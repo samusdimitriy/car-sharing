@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { getCarDetailsDescList } from 'utils/getCarDescriptionList';
 import { commaToNumber } from 'utils/commaToNumber';
-import DescriptionList from '../kit/DescriptionList/DescriptionList';
-import DescriptionChipList from '../kit/DescriptionChipList/DescriptionChipList';
+import DescriptionList from '../DescriptionList/DescriptionList';
+import DescriptionChipList from '../DescriptionChipList/DescriptionChipList';
 
 const CardModalWrapper = styled.div`
   display: grid;
@@ -86,7 +86,7 @@ const RentalButton = styled.a`
   }
 `;
 
-function CarModalCard({ car }) {
+function ModalCard({ car }) {
   const {
     img,
     make,
@@ -138,7 +138,7 @@ function CarModalCard({ car }) {
   );
 }
 
-CarModalCard.propTypes = {
+ModalCard.propTypes = {
   car: PropTypes.shape({
     id: PropTypes.string,
     year: PropTypes.number.isRequired,
@@ -160,4 +160,4 @@ CarModalCard.propTypes = {
   }).isRequired,
 };
 
-export default CarModalCard;
+export default ModalCard;

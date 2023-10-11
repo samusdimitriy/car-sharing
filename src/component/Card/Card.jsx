@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { toast } from 'react-toastify';
-import { useDisableBodyScroll } from 'hook/useDisableBodyScroll';
 import { useUpdateFavoriteAdvertByIdMutation } from 'redux/adverts/advertsSlice';
 import { getCarDescList } from 'utils/getCarDescriptionList';
 import HeartIcon from 'images/icons/HeartIcon';
-import DescriptionList from 'component/kit/DescriptionList/DescriptionList';
-import Button from 'component/kit/Button/Button';
-import CarModalCard from 'component/CarModalCard/CarModalCard';
+import DescriptionList from 'component/DescriptionList/DescriptionList';
+import Button from 'component/Button/Button';
+import ModalCard from 'component/ModalCard/ModalCard';
 import Modal from 'component/Modal/Modal';
 
 const CardWrapper = styled.div`
@@ -101,13 +100,12 @@ const DescriptionListWrapper = styled.div`
 
 const StyledCard = styled.li``;
 
-const CarCard = ({ car }) => {
+const Card = ({ car }) => {
   const { id, img, make, model, year, rentalPrice, favorite } = car;
 
   const [isShowModal, setIsShowModal] = useState(false);
 
   const [updateFavoriteAdvertById] = useUpdateFavoriteAdvertByIdMutation();
-  useDisableBodyScroll(isShowModal);
 
   const descriptionList = getCarDescList(car);
 
@@ -156,14 +154,14 @@ const CarCard = ({ car }) => {
 
       {isShowModal && (
         <Modal onCloseModal={handleToggleModal}>
-          <CarModalCard car={car} />
+          <ModalCard car={car} />
         </Modal>
       )}
     </StyledCard>
   );
 };
 
-CarCard.propTypes = PropTypes.shape({
+Card.propTypes = PropTypes.shape({
   id: PropTypes.number.isRequired,
   year: PropTypes.number.isRequired,
   make: PropTypes.string.isRequired,
@@ -183,4 +181,4 @@ CarCard.propTypes = PropTypes.shape({
   favorite: PropTypes.bool.isRequired,
 }).isRequired;
 
-export default CarCard;
+export default Card;
