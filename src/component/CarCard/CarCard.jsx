@@ -49,7 +49,6 @@ const ThumbImg = styled.div`
 
     & svg {
       stroke: var(--whiteColor);
-      transition: stroke 0.5s;
     }
 
     & svg.favorite {

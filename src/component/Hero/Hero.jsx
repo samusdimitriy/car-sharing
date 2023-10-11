@@ -2,6 +2,7 @@ import Button from 'component/kit/Button/Button';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import 'animate.css';
 
 const HeroContainer = styled.div`
   position: relative;
@@ -36,7 +37,9 @@ const Hero = () => {
     <HeroContainer>
       <h1>Treat yourself to something special this weekend...</h1>
       <NavLink to="/catalog">
-        <Button>View all cars</Button>
+        <Button className="animate__animated animate__pulse">
+          View all cars
+        </Button>
       </NavLink>
     </HeroContainer>
   );

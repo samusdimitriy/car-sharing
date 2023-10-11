@@ -5,11 +5,9 @@ import styled from 'styled-components';
 import { useGetAdvertsQuery } from 'redux/adverts/advertsSlice';
 import { selectAdvertsFilter } from 'redux/filters/filtersSelectors';
 
-import { createArrayWithStep } from 'utils/createArrayWithStep';
 import { getFilteredAdverts } from 'utils/getFilteredAdverts';
 
 import AdvertsList from 'component/AdvertsList/AdvertsList';
-import Filter from 'component/Filter/Filter';
 import Button from 'component/kit/Button/Button';
 import Section from 'component/kit/Section/Section';
 import CustomLoader from 'component/kit/CustomLoader/CustomLoader';
@@ -17,26 +15,6 @@ import CustomLoader from 'component/kit/CustomLoader/CustomLoader';
 const Container = styled.div`
   position: relative;
   display: flex;
-`;
-
-const FilterWrapper = styled.div`
-  position: sticky;
-  top: 24px;
-  left: 0;
-  padding: 24px 12px;
-  background-color: ${props => props.theme.bgDarkColor};
-
-  height: fit-content;
-  border-radius: 0 24px 24px 0;
-
-  & > .filter {
-    flex-direction: column;
-    align-items: flex-start;
-
-    width: fit-content;
-
-    margin-bottom: 0;
-  }
 `;
 
 const AdvertsWrapper = styled.div`
@@ -59,10 +37,6 @@ const Favorites = () => {
   const { data: adverts, isLoading } = useGetAdvertsQuery();
   const [currentPage, setCurrentPage] = useState(1);
 
-  let dataFilters = {
-    brands: [],
-    prices: [],
-  };
   let visibleAdverts = useMemo(() => {}, []);
 
   const limitAdverts = 8;
@@ -73,21 +47,6 @@ const Favorites = () => {
     const favoritedAdverts = adverts.filter(({ favorite }) => favorite);
 
     visibleAdverts = getFilteredAdverts(favoritedAdverts, filter);
-
-    dataFilters = {
-      brands: ['All', ...new Set(favoritedAdverts.map(({ make }) => make))],
-      prices: createArrayWithStep(
-        0,
-        Math.max(
-          ...new Set(
-            favoritedAdverts.map(({ rentalPrice }) =>
-              rentalPrice.replace(/(\$)/, '')
-            )
-          )
-        ),
-        10
-      ),
-    };
 
     totalAdverts = visibleAdverts.length;
     totalPages = !totalAdverts ? 1 : Math.ceil(totalAdverts / limitAdverts);
