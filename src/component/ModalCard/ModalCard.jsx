@@ -1,90 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { getCarDetailsDescList } from 'utils/getCarDescriptionList';
 import { commaToNumber } from 'utils/commaToNumber';
 import DescriptionList from '../DescriptionList/DescriptionList';
 import DescriptionChipList from '../DescriptionChipList/DescriptionChipList';
-
-const CardModalWrapper = styled.div`
-  display: grid;
-  gap: 24px;
-  padding: 0 24px 24px;
-  width: 462px;
-  color: var(--headingsColor);
-`;
-
-const CardModalImg = styled.img`
-  width: 100%;
-  height: 248px;
-  object-fit: cover;
-  margin-bottom: -10px;
-  border-radius: 14px;
-`;
-
-const CarHeader = styled.div`
-  h3 {
-    font-size: var(--headingsFontSize);
-    font-weight: 500;
-    line-height: 1.33;
-    margin-bottom: 8px;
-    span {
-      color: var(--accentColor);
-    }
-  }
-
-  ul {
-    margin-bottom: 14px;
-  }
-
-  p {
-    font-size: var(--headingsSecondFontSize);
-    font-weight: 400;
-    line-height: 1.42;
-  }
-`;
-
-const AccessoriesWrapper = styled.div`
-  h4 {
-    font-size: var(--headingsSecondFontSize);
-    font-weight: 500;
-    line-height: 1.42;
-    margin-bottom: 8px;
-  }
-
-  div {
-    display: grid;
-    gap: 4px;
-  }
-`;
-
-const RentalConditionsWrapper = styled.div`
-  h4 {
-    font-size: var(--headingsSecondFontSize);
-    font-weight: 500;
-    line-height: 1.42;
-    margin-bottom: 8px;
-  }
-`;
-
-const RentalButton = styled.a`
-  width: fit-content;
-  font-size: var(--headingsSecondFontSize);
-  font-weight: 600;
-  line-height: 1.42;
-  color: var(--whiteColor);
-  background-color: var(--accentColor);
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  padding: 12px 50px;
-  transition: background-color 0.5s;
-
-  &:hover,
-  &:focus {
-    background-color: var(--hoverColor);
-  }
-`;
+import {
+  Accessories,
+  CarTitle,
+  ModalImage,
+  RentalButton,
+  RentalConditions,
+  Wrapper,
+} from './ModalCard.styled';
 
 function ModalCard({ car }) {
   const {
@@ -108,9 +35,9 @@ function ModalCard({ car }) {
   ];
 
   return (
-    <CardModalWrapper>
-      <CardModalImg src={img} aria-label={`${make} ${model}`} />
-      <CarHeader>
+    <Wrapper>
+      <ModalImage src={img} aria-label={`${make} ${model}`} />
+      <CarTitle>
         <h3>
           {`${make} `}
           <span>{model}</span>
@@ -118,23 +45,23 @@ function ModalCard({ car }) {
         </h3>
         <DescriptionList list={descriptionList} size="medium" />
         <p>{description}</p>
-      </CarHeader>
+      </CarTitle>
 
-      <AccessoriesWrapper>
+      <Accessories>
         <h4>Accessories and functionalities:</h4>
         <div>
           <DescriptionList list={accessories} />
           <DescriptionList list={functionalities} />
         </div>
-      </AccessoriesWrapper>
+      </Accessories>
 
-      <RentalConditionsWrapper>
+      <RentalConditions>
         <h4>Rental Conditions:</h4>
         <DescriptionChipList list={rentalConditionsArray} />
-      </RentalConditionsWrapper>
+      </RentalConditions>
 
       <RentalButton href="tel:+380730000000">Rental Car</RentalButton>
-    </CardModalWrapper>
+    </Wrapper>
   );
 }
 

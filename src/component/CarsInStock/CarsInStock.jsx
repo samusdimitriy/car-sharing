@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useGetAdvertsQuery } from 'redux/adverts/advertsSlice';
-import AdvertsList from 'component/AdvertsList/AdvertsList';
+import AdvertList from 'component/AdvertList/AdvertList';
 import styled from 'styled-components';
 
 const InStockContainer = styled.div`
@@ -41,7 +41,7 @@ const CarsInStock = () => {
 
   return (
     <InStockContainer className="in-stock__container">
-      {!isLoading && <AdvertsList list={notAllAdverts} />}
+      {!isLoading && <AdvertList list={notAllAdverts} />}
       <InStockButton className="in-stock__btn" to="/catalog">
         More adverts
       </InStockButton>

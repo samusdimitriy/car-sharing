@@ -8,7 +8,7 @@ import { selectAdvertsFilter } from 'redux/filters/filtersSelectors';
 import { getFilteredAdverts } from 'utils/getFilteredAdverts';
 import { createArrayWithStep } from 'utils/createArrayWithStep';
 
-import AdvertsList from 'component/AdvertsList/AdvertsList';
+import AdvertList from 'component/AdvertList/AdvertList';
 import Filter from 'component/Filter/Filter';
 import Section from 'component/Section/Section';
 import Button from 'component/Button/Button';
@@ -92,7 +92,7 @@ const Catalog = () => {
       ) : (
         <>
           <Filter filtersList={dataFilters} />
-          <AdvertsList list={currentAdvertsData} />
+          <AdvertList list={currentAdvertsData} />
           <ButtonsWrapper>
             {totalPages > currentPage && (
               <LoadMoreButton

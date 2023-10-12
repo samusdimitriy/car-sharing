@@ -1,82 +1,15 @@
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import ChevronDownIcon from 'images/icons/ChevronDownIcon';
 import { useEffect, useState } from 'react';
-
-const DropdownContainer = styled.div`
-  position: relative;
-  display: inline-grid;
-  gap: 8px;
-  height: 74px;
-`;
-
-const DropdownLabel = styled.p`
-  color: var(--headingsSecondColor);
-  font-size: var(--headingsSecondFontSize);
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1.28;
-`;
-
-const DropdownHeader = styled.div`
-  position: relative;
-  z-index: 0;
-  color: var(--headingsColor);
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.11;
-  padding: 14px 18px;
-  background-color: var(--bgSecondColor);
-  border-radius: 14px;
-
-  & > svg {
-    position: absolute;
-    top: 14px;
-    right: 18px;
-    stroke: var(--headingsColor);
-  }
-`;
-
-const DropdownSelectInput = styled.input`
-  appearance: none;
-  border: none;
-  outline: none;
-  background-color: transparent;
-  cursor: pointer;
-`;
-
-const DropdownListContainer = styled.div`
-  position: relative;
-  z-index: 5;
-  margin-top: 4px;
-  padding: 14px 8px 14px 18px;
-  height: 272px;
-  overflow-y: scroll;
-  border-radius: 14px;
-  border: 1px solid rgba(18, 20, 23, 0.05);
-  background-color: var(--bgColor);
-  box-shadow: 0px 4px 36px 0px rgba(0, 0, 0, 0.02);
-`;
-
-const DropdownList = styled.ul`
-  display: grid;
-  gap: 8px;
-  background: var(--bgColor);
-`;
-
-const DropdownItem = styled.li`
-  color: rgba(18, 20, 23, 0.2);
-  font-size: var(--standardSize);
-  font-weight: 500;
-  line-height: 1.25;
-  background-color: var(--bgColor);
-  cursor: pointer;
-
-  &:hover,
-  &:focus {
-    color: inherit;
-  }
-`;
+import {
+  Container,
+  Header,
+  Item,
+  Label,
+  List,
+  ListContainer,
+  SelectInput,
+} from './SelectField.styled';
 
 const SelectField = ({
   name,
@@ -110,14 +43,11 @@ const SelectField = ({
   }, [isOpen]);
 
   return (
-    <DropdownContainer>
-      <DropdownLabel>{label}</DropdownLabel>
+    <Container>
+      <Label>{label}</Label>
       <div className="dropdown__select">
-        <DropdownHeader
-          className={isOpen ? 'dropdown__open' : ''}
-          onClick={toggling}
-        >
-          <DropdownSelectInput
+        <Header className={isOpen ? 'dropdown__open' : ''} onClick={toggling}>
+          <SelectInput
             type="text"
             id={id}
             name={name}
@@ -125,24 +55,24 @@ const SelectField = ({
             readOnly={true}
           />
           <ChevronDownIcon />
-        </DropdownHeader>
+        </Header>
         {isOpen && (
-          <DropdownListContainer>
-            <DropdownList>
+          <ListContainer>
+            <List>
               {optionList.map(option => (
-                <DropdownItem
+                <Item
                   name={name}
                   onClick={onOptionClicked(option)}
                   key={Math.random()}
                 >
                   {option}
-                </DropdownItem>
+                </Item>
               ))}
-            </DropdownList>
-          </DropdownListContainer>
+            </List>
+          </ListContainer>
         )}
       </div>
-    </DropdownContainer>
+    </Container>
   );
 };
 

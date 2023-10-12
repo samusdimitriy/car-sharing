@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ import GlobalStyle from './GlobalStyle';
 
 const rootElement = document.getElementById('root');
 
-render(
+createRoot(rootElement).render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter basename="/car-sharing">
@@ -20,6 +20,5 @@ render(
         <App />
       </BrowserRouter>
     </Provider>
-  </React.StrictMode>,
-  rootElement
+  </React.StrictMode>
 );

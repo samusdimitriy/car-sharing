@@ -7,7 +7,7 @@ import { selectAdvertsFilter } from 'redux/filters/filtersSelectors';
 
 import { getFilteredAdverts } from 'utils/getFilteredAdverts';
 
-import AdvertsList from 'component/AdvertsList/AdvertsList';
+import AdvertList from 'component/AdvertList/AdvertList';
 import Button from 'component/Button/Button';
 import Section from 'component/Section/Section';
 import CustomLoader from 'component/CustomLoader/CustomLoader';
@@ -84,7 +84,7 @@ const Favorites = () => {
       ) : (
         <Container>
           <AdvertsWrapper>
-            <AdvertsList list={currentAdvertsData} />
+            <AdvertList list={currentAdvertsData} />
             <div className="buttons__wrapper">
               {totalPages > currentPage && (
                 <LoadMoreButton
