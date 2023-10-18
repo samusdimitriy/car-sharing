@@ -1,13 +1,13 @@
-# Car Sharing Application
+# Car Sharing Website
 
-![Car Sharing Application](./src/images/preview.png)
+![Car Sharing Website](./src/images/preview.png)
 
 This project is a web application for browsing and managing car rentals. Users
 can view a list of available cars, filter them, and mark their favorites.
 
 ## Table of Contents
 
-- [Car Sharing Application](#car-sharing-application)
+- [Car Sharing Website](#car-sharing-website)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Technologies Used](#technologies-used)
